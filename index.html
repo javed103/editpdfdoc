@@ -12,7 +12,11 @@
   <meta property="og:title" content="EditPDFDoc – Free Online PDF Editor &amp; Tools" />
   <meta property="og:description" content="Merge, split, compress, convert and edit PDFs for free. No software needed." />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"EditPDFDoc","url":"https://www.editpdfdoc.com","description":"Free online PDF tools"}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23E8334A'/><text y='24' x='5' font-size='22' font-family='Arial'>✏️</text></svg>" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23E8334A'/><text y='24' x='5' font-size='22' font-family='Arial'>✏️</text></svg>" />
+  <meta name="theme-color" content="#E8334A" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;0,700;1,300;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
@@ -251,10 +255,7 @@
 </head>
 <body>
 
-<!-- SYSTEM STATUS BAR -->
-<div class="system-bar" id="systemBar">
-  ⚠️ Some system tools not installed. <a href="/api/system" target="_blank">Check /api/system</a> for install instructions.
-</div>
+<!-- system bar removed -->
 
 <!-- NAV -->
 <nav class="nav">
@@ -267,7 +268,6 @@
       <li><a href="#how" onclick="showHome()">How It Works</a></li>
       <li><a href="#pricing" onclick="showHome()">Pricing</a></li>
       <li><a href="#faq" onclick="showHome()">FAQ</a></li>
-      <li><a href="/api/system" target="_blank" style="font-size:.78rem;opacity:.7">API Status</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></div>
   </div>
@@ -279,7 +279,6 @@
     <li><a href="#tools" onclick="toggleMobileNav()">🛠 All Tools</a></li>
     <li><a href="#how" onclick="toggleMobileNav()">📖 How It Works</a></li>
     <li><a href="#pricing" onclick="toggleMobileNav()">💰 Pricing</a></li>
-    <li><a href="/api/system" target="_blank" onclick="toggleMobileNav()">🔧 API Status</a></li>
   </ul>
 </div>
 
@@ -467,7 +466,7 @@
         <div class="social-links" style="margin-top:20px"><a>🐦</a><a>💼</a><a>📘</a><a>📸</a></div>
       </div>
       <div class="footer-col"><h4>Tools</h4><ul><li><a href="#" onclick="openTool('merge-pdf')">Merge PDF</a></li><li><a href="#" onclick="openTool('split-pdf')">Split PDF</a></li><li><a href="#" onclick="openTool('compress-pdf')">Compress PDF</a></li><li><a href="#" onclick="openTool('pdf-to-word')">PDF to Word</a></li><li><a href="#" onclick="openTool('pdf-to-jpg')">PDF to JPG</a></li><li><a href="#" onclick="openTool('jpg-to-pdf')">JPG to PDF</a></li><li><a href="#" onclick="openTool('sign-pdf')">Sign PDF</a></li><li><a href="#" onclick="openTool('protect-pdf')">Protect PDF</a></li></ul></div>
-      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="/api/system" target="_blank">API Status</a></li></ul></div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">API</a></li></ul></div>
       <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
     </div>
     <div class="footer-bottom">
@@ -883,18 +882,7 @@ window.addEventListener('scroll', () => {
     window.scrollY > 4 ? '0 2px 20px rgba(26,16,20,.08)' : '';
 });
 
-/* ══════════ CHECK SYSTEM STATUS ON LOAD ══════════ */
-(async () => {
-  try {
-    const res  = await fetch(API + '/api/system');
-    const data = await res.json();
-    if (data.missingTools?.length > 0) {
-      document.getElementById('systemBar').classList.add('show');
-    }
-  } catch {
-    // Server not running — that's OK during static dev
-  }
-})();
+/* system status check removed */
 </script>
 </body>
 </html>
