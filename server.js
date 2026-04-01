@@ -32,13 +32,17 @@ app.use(helmet({
 }));
 
 /* ── CORS ─────────────────────────────────────────── */
-const allowedOrigin = process.env.ALLOWED_ORIGIN || 'http://localhost:3000';
+// Since frontend and backend are served from the SAME Express server,
+// all browser requests are same-origin and don't send an Origin header.
+// We open CORS fully so API calls from any origin (Postman, future CDN,
+// custom domain) also work without issue.
 app.use(cors({
-  origin: true,          // ← allows any origin (fine for now)
+  origin: true,                  // reflect any origin — safe because we own the server
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
+app.options('*', cors());        // handle all preflight OPTIONS requests
 
 /* ── Logging ──────────────────────────────────────── */
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'));
